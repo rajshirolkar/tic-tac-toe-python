@@ -12,7 +12,7 @@ class TestLogic(unittest.TestCase):
             [None, 'O', 'X'],
         ]
         print('Test')
-        self.assertEqual(logic.check_win(board), 'X')
+        self.assertEqual(logic.check_win(board, 'X'), 'X')
 
 if __name__ == '__main__':
     unittest.main()
