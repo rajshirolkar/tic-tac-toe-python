@@ -21,6 +21,12 @@ if __name__ == '__main__':
         #Input a move from the player
         row = int(input("Enter the row number (0-2) : "))
         column = int(input("Enter the column number (0-2) : "))
+
+        # Do not allow players to play the same square
+        if board[row][column] != None:
+            print("Please play the move in an empty square!")
+            continue
+
         if turn:
             board[row][column] = 'X'
             winner = check_win(board, 'X')
