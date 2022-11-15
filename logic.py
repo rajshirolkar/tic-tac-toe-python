@@ -134,3 +134,6 @@ class TicTacToe:
 
             # Increment the number of moves played
             move_number += 2
+
+        if move_number > 8:
+            print("-----It's a draw!!!-----")
