@@ -1,10 +1,15 @@
-from logic import TicTacToe
+from logic import Game, Human, Bot
 
 
 if __name__ == "__main__":
-    game = TicTacToe()
 
-    if game.is_against_human():
-        game.play_with_human()
+    print("     Play against : ")
+    print("     1. Human ")
+    print("     2. Computer ")
+    choice = int(input("     ---> Choice : "))
+    if choice <= 1:
+        game = Game(Human(), Human())
     else:
-        game.play_with_computer()
+        game = Game(Human(), Bot())
+
+    game.run()
