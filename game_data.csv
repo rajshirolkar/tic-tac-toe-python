@@ -1,0 +1,4 @@
+,game_id,playerX,playerO,winner,move1,move2,move3,move4,move5,move6,move7,move8,move9
+0,85d21783c1dc43f0a671c86507133963,Human,Bot,Human,1-1,1-1,0-0,1-1,2-2,,,,
+1,5ab775f7a9a54d4aac7d7ae69d3b6285,Human,Human,Human,1-1,2-2,0-0,2-0,0-2,0-1,1-0,2-1,
+2,4e4499868e054abdb02d8208897d362f,Human,Bot,Human,1-1,0-2,0-0,2-2,1-2,0-1,1-0,,
