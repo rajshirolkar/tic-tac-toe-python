@@ -1,4 +1,11 @@
-,game_id,playerX,playerO,winner,move1,move2,move3,move4,move5,move6,move7,move8,move9
-0,85d21783c1dc43f0a671c86507133963,Human,Bot,Human,1-1,1-1,0-0,1-1,2-2,,,,
-1,5ab775f7a9a54d4aac7d7ae69d3b6285,Human,Human,Human,1-1,2-2,0-0,2-0,0-2,0-1,1-0,2-1,
-2,4e4499868e054abdb02d8208897d362f,Human,Bot,Human,1-1,0-2,0-0,2-2,1-2,0-1,1-0,,
+,game_id,playerX,playerO,winner,winner_char,move1,move2,move3,move4,move5,move6,move7,move8,move9
+0,85d21783c1dc43f0a671c86507133963,Human,Bot,Human,X,1-1,1-1,0-0,1-1,2-2,,,,
+1,5ab775f7a9a54d4aac7d7ae69d3b6285,Human,Human,Human,O,1-1,2-2,0-0,2-0,0-2,0-1,1-0,2-1,
+2,4e4499868e054abdb02d8208897d362f,Human,Bot,Human,X,1-1,0-2,0-0,2-2,1-2,0-1,1-0,,
+3,50d622253e4a43088b7d4aafb0672cfa,Human,Bot,Human,X,1-1,2-0,0-0,1-0,2-2,,,,
+4,00a42fd23fcf42fdab3a931da6016e65,Human,Bot,Bot,O,0-0,1-1,0-2,1-0,2-0,2-0,,,
+5,ae2317a3d76c46de92d64505812b15c6,Human,Bot,Human,X,2-2,0-0,1-1,0-0,0-2,1-2,2-0,,
+6,39200972bc5049f6a2a19e1573f0a988,Human,Bot,Human,X,1-1,2-1,2-0,2-1,0-2,,,,
+7,bb779801c8d9480c92ecf4d33f8de337,Human,Bot,Human,X,1-1,0-1,2-0,0-2,2-2,2-1,0-0,,
+8,d81b92f816b843ca882ce7d93247639d,Human,Bot,Human,X,0-0,0-2,1-1,1-0,2-2,,,,
+9,0da57a4697a34d9b922b19b23489d290,Human,Bot,Human,X,2-0,0-0,2-2,2-0,1-1,2-1,0-2,,

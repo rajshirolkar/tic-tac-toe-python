@@ -17,6 +17,7 @@ class Database:
                     "playerX",
                     "playerO",
                     "winner",
+                    "winner_char",
                     "move1",
                     "move2",
                     "move3",
@@ -49,11 +50,13 @@ class Database:
         return True
 
     # Update the winner of a game
-    def update_winner(self, game_id, winner):
+    def update_winner(self, game_id, winner, win_char):
         game = self.games[self.games["game_id"] == game_id]
         if len(game) == 0:
             return False
         self.games.loc[self.games["game_id"] == game_id, "winner"] = winner
+        self.games.loc[self.games["game_id"] ==
+                       game_id, "winner_char"] = win_char
         self.save()
         return True
 
@@ -99,6 +102,18 @@ class Database:
             return None
         most_common_first_move = first_move_counts.index[0]
         return most_common_first_move
+
+    def get_least_common_first_move(self):
+        games = self.games
+        if len(games) == 0:
+            return None
+        first_moves = games["move1"]
+        first_move_counts = first_moves.value_counts()
+        if len(first_move_counts) == 0:
+            return None
+        least_common_first_move = first_move_counts.index[len(
+            first_move_counts) - 1]
+        return least_common_first_move
 
     # Save the DataFrame to the CSV file
     def save(self):
@@ -183,8 +198,13 @@ class Game:
             self.db.insert_move(self.game_id, move_number, coordinates)
             if self._board._check_win(self.current_char):
                 print(f"{self.current_char} WINS!!!!!")
-                self.db.update_winner(self.game_id, self.current_player.type)
+                self.db.update_winner(
+                    self.game_id, self.current_player.type, self.current_char)
                 print(self.db.get_stats())
+                print('Most common first move : ',
+                      self.db.get_most_common_first_move())
+                print('Least common first move : ',
+                      self.db.get_least_common_first_move())
                 # self.db.save()
                 sys.exit("Game Ended")
 
@@ -192,7 +212,7 @@ class Game:
             self.switch_player()
 
         print("Draw!")
-        self.db.update_winner(self.game_id, "Draw")
+        self.db.update_winner(self.game_id, "Draw", "NONE")
         print(self.db.get_stats())
         # self.db.save()
 
@@ -229,4 +249,5 @@ class Bot:
             self.get_move(board, char)
         else:
             board.set(row, column, char)
+            print(board)
         return (row, column)
