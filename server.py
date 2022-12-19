@@ -23,19 +23,28 @@ def index():
 
 @app.route("/game")
 def game():
-    print('in')
-    if not "board" in session:
+    try:
+        if not "board" in session:
+            session["board"] = [[None, None, None],
+                                [None, None, None],
+                                [None, None, None]]
+            session["turn"] = "Player X"
+            session["char"] = "X"
+        ans = check_win(session["board"], session["char"])
+        if (ans[0] == True):
+            return render_template("finish.html", ans="{} Player is Won!".format(ans[1]))
+        elif (ans[0] == False and ans[1] == "Draw"):
+            return render_template("finish.html", ans="Its a Draw!")
+        else:
+            return render_template("game.html", game=session["board"], turn=session["turn"])
+    except:
+        session.clear()
         session["board"] = [[None, None, None],
                             [None, None, None],
                             [None, None, None]]
         session["turn"] = "Player X"
         session["char"] = "X"
-    ans = check_win(session["board"], session["char"])
-    if (ans[0] == True):
-        return render_template("finish.html", ans="{} Player is Won!".format(ans[1]))
-    elif (ans[0] == False and ans[1] == "Draw"):
-        return render_template("finish.html", ans="Its a Draw!")
-    else:
+
         return render_template("game.html", game=session["board"], turn=session["turn"])
 
 
@@ -53,11 +62,7 @@ def play(row, col):
 
 @app.route("/clear")
 def clear():
-    session["board"] = [[None, None, None],
-                        [None, None, None],
-                        [None, None, None]]
-    session["turn"] = "Player X"
-    session["char"] = "X"
+    session.clear()
     return redirect(url_for("game"))
 
 

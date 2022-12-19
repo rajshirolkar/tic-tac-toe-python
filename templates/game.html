@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 {% block content %}
-<h1>its {{ turn}} Turn!</h1>
-    <table align="center">
+<h1>It is {{ turn}} 's Turn!</h1>
+    <table align="center" class="table table-bordered">
     {% for i in range(3) %}
         <tr>
             {% for j in range(3) %}
