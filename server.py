@@ -84,7 +84,7 @@ def check_win(board, win_char):
         for i in range(3):
             for j in range(3):
                 if (board[i][j] == None):
-                    # Its Return somthing, never mind[1].
+                    # Return Something Anything
                     return [False, win_char]
 
     # Its Draw!
@@ -104,47 +104,8 @@ def bot_move(board, char):
 
 @app.route("/help")
 def help():
-    # ans = minimax(session["board"], session["turn"])
     row, column = bot_move(session["board"], session["char"])
     return redirect(url_for('play', row=row, col=column))
-    # if ans[1] is not None:
-    #     return redirect(url_for('play', row=ans[1][0], col=ans[1][1]))
-
-
-def minimax(board, turn):
-    ans = CheckWinner(board)
-    if (ans[0] == True and ans[1] == "Player X"):
-        return (1, None)
-    elif (ans[0] == True and ans[1] == "Player O"):
-        return (-1, None)
-    elif (ans[0] == False and ans[1] == "Draw"):
-        return (0, None)
-    else:  # Next Step of Recursion
-        moves = []
-        for i in range(3):
-            for j in range(3):
-                if (board[i][j] == None):
-                    moves.append((i, j))
-        # All Moves that avaliabe are now at moves
-        if turn == "Player X":
-            value = -2
-            for i, j in moves:
-                board[i][j] = "Player X"
-                result = minimax(board, "Player O")[0]
-                if (value < result):
-                    value = result
-                    step = (i, j)
-                board[i][j] = None
-        elif turn == "Player O":  # turn is "Player O"
-            value = 2
-            for i, j in moves:
-                board[i][j] = "Player O"
-                result = minimax(board, "Player X")[0]
-                if (value > result):
-                    value = result
-                    step = (i, j)
-                board[i][j] = None
-        return (value, step)
 
 
 if __name__ == '__main__':
